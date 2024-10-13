@@ -1,0 +1,48 @@
+	// CRAP, REFACTOR INTO A SEPARATE CLASS. USE HASHMAP 
+	private String getComp(String compMnemonic, String aBit) {
+		if (compMnemonic.length() == 1) {
+			if (aBit.equals("1")) {
+				return "110000";
+			}
+			if ((int) compMnemonic.charAt(0) < 65) {
+				if (compMnemonic.equals("0")) {
+					return "101010";
+				}
+				return "111111";
+			}
+		} else if (compMnemonic.length() == 2) {
+			if (aBit.equals("1")) {
+				if (compMnemonic.startsWith("!")) {
+					return "110001";
+				}
+				return "110011";
+			}
+			if (compMnemonic.startsWith("!")) {
+				if (compMnemonic.contains("D")) {
+					return "001101";
+				}
+				return "110001";
+			} else {
+				if (compMnemonic.contains("1")) {
+					return "111010";
+				}
+				if (compMnemonic.contains("D")) {
+					return "001111";
+				}
+				return "110011";
+			}
+		} else {
+			if(aBit.equals("1")) {
+				if(compMnemonic.contains("1")) {
+					if(compMnemonic.contains("+")) {
+						return "110111"; //return M+1
+					}
+					return "110010";//return M-1
+				}
+				if(compMnemonic.startsWith("M")) {
+					return "000"
+				}
+				
+			}
+		}
+	}
