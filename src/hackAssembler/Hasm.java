@@ -3,6 +3,7 @@ package hackAssembler;
 import java.io.FileWriter;
 import java.io.IOException;
 
+// DONE. CLEANUP AND UPLOAD
 public class Hasm {
 
 	public static void main(String[] args) {
@@ -22,6 +23,7 @@ public class Hasm {
 		}
 
 		Parser sourceParser = new Parser(sourceName, destFile);
+		sourceParser.firstPass();
 		sourceParser.translate();
 
 	}
@@ -35,9 +37,9 @@ public class Hasm {
 
 	// caution: overwrites the og file
 	private static void createTarget(String name) throws IOException {
-	      try (FileWriter writer = new FileWriter(name, false)) {
-	            // FileWriter is closed automatically
-	        }
+		try (FileWriter writer = new FileWriter(name, false)) {
+			// FileWriter is closed automatically
+		}
 	}
 
 }

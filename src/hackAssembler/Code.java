@@ -3,22 +3,20 @@ package hackAssembler;
 import java.util.HashMap;
 import java.util.Map;
 
-
 //optimize later 
 // provides convenient map for mnemonics sent to it from the parser module
 public class Code {
-	private Map <String, String> dest, comp, jump;
-	
+	private Map<String, String> dest, comp, jump;
+
 	public Code() {
-		dest = new HashMap<>(); 
+		dest = new HashMap<>();
 		comp = new HashMap<>();
 		jump = new HashMap<>();
 		this.initDest();
 		this.initComp();
-		this.initJump(); 
+		this.initJump();
 	}
-	
-	
+
 	private void initDest() {
 		dest.put("null", "000");
 		dest.put("M", "001");
@@ -27,12 +25,13 @@ public class Code {
 		dest.put("A", "100");
 		dest.put("AM", "101");
 		dest.put("AD", "110");
-		dest.put("AMD", "111");		
+		dest.put("AMD", "111");
 	}
+
 	private void initComp() {
 		comp.put("0", "0101010");
 		comp.put("1", "0111111");
-		comp.put("-1","0111010");
+		comp.put("-1", "0111010");
 		comp.put("D", "0001100");
 		comp.put("A", "0110000");
 		comp.put("!D", "0001101");
@@ -48,19 +47,19 @@ public class Code {
 		comp.put("A-D", "0000111");
 		comp.put("D&A", "0000000");
 		comp.put("D|A", "0010101");
-		//M
+		// M
 		comp.put("M", "1110000");
 		comp.put("!M", "1110001");
-		comp.put("-M","1110011");
+		comp.put("-M", "1110011");
 		comp.put("M+1", "1110111");
 		comp.put("M-1", "1110010");
 		comp.put("D+M", "1000010");
 		comp.put("D-M", "1010011");
 		comp.put("M-D", "1000111");
 		comp.put("D&M", "1000000");
-		comp.put("D|M", "1010101");			
+		comp.put("D|M", "1010101");
 	}
-	
+
 	private void initJump() {
 		jump.put("null", "000");
 		jump.put("JGT", "001");
@@ -71,15 +70,15 @@ public class Code {
 		jump.put("JLE", "110");
 		jump.put("JMP", "111");
 	}
-	
+
 	public String getDest(String mnemonic) {
 		return dest.get(mnemonic);
 	}
-	
+
 	public String getComp(String mnemonic) {
 		return comp.get(mnemonic);
 	}
-	
+
 	public String getJump(String mnemonic) {
 		return jump.get(mnemonic);
 	}
